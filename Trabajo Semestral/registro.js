@@ -1,31 +1,53 @@
-document.addEventListener('DOMContentLoaded', function() {
+$(document).ready(function() {
+  // Validación de formulario
+  $("#mi-formulario").submit(function(event) {
+    if (this.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    this.classList.add('was-validated');
+    
+    // Si el formulario es válido, guardar los datos en localStorage
+    if (this.checkValidity() === true) {
+      const usuario = $("#usuario").val();
+      const contraseña = $("#contraseña").val();
+      const email = $("#email").val();
+      
+      const userData = {
+        usuario: usuario,
+        contraseña: contraseña,
+        email: email
+      };
+      
+      localStorage.setItem("usuario", JSON.stringify(userData));
+    }
+  });
 
-const formulario = document.getElementById("mi-formulario");
+  // Validación de usuario
+  $("#usuario").blur(function() {
+    if ($(this).val().length < 4) {
+      $(this).removeClass('is-valid').addClass('is-invalid');
+    } else {
+      $(this).removeClass('is-invalid').addClass('is-valid');
+    }
+  });
 
-formulario.addEventListener("submit", function(event) {
-  event.preventDefault();
+  // Validación de contraseña
+  $("#contraseña").blur(function() {
+    if ($(this).val().length < 6) {
+      $(this).removeClass('is-valid').addClass('is-invalid');
+    } else {
+      $(this).removeClass('is-invalid').addClass('is-valid');
+    }
+  });
 
-  const usuario = document.getElementById("usuario").value;
-  const contraseña = document.getElementById("contraseña").value;
-  const email = document.getElementById("email").value;
-
-  const usuarioObj = {
-    usuario: usuario,
-    contraseña: contraseña,
-    email: email
-  };
-
-  // Guardar los datos en localStorage
-  localStorage.setItem("usuario", JSON.stringify(usuarioObj));
-
-  alert("Usuario registrado con éxito");
-
-  // Redirigir al usuario a la página de login
-  window.location.href = "./micuenta.html";
-
-
-  // Borrar los campos del formulario
-  formulario.reset();
-});
-
+  // Validación de correo electrónico
+  $("#email").blur(function() {
+    const regex = /^\S+@\S+\.\S+$/;
+    if (regex.test($(this).val())) {
+      $(this).removeClass('is-invalid').addClass('is-valid');
+    } else {
+      $(this).removeClass('is-valid').addClass('is-invalid');
+    }
+  });
 });

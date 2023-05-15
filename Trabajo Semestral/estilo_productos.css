@@ -1,0 +1,43 @@
+
+    /* Estilo de las tarjetas de productos */
+    .card {
+    border: none;
+    margin-bottom: 50px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Estilo de las imágenes de las tarjetas */
+    .card-img-top {
+    height: 350px;
+    object-fit: cover;
+    }
+    
+    /* Estilo de los títulos de las tarjetas */
+    .card-title {
+    font-size: 1.5em;
+    margin: 0;
+    margin-top: 10px;
+    }
+    
+    /* Estilo del texto del precio de las tarjetas */
+    .card-text {
+    font-size: 1.2em;
+    margin: 0;
+    margin-top: 10px;
+    }
+    
+    /* Estilo de los botones de agregar al carrito */
+    button {
+    background-color: #FF69B4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    margin-top: 10px;
+    cursor: pointer;
+    }
+    
+    /* Estilo del botón de agregar al carrito al pasar el cursor por encima */
+    button:hover {
+    background-color: #D14C8F;
+    }
